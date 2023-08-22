@@ -5,20 +5,12 @@ Created on Wed Nov 24 19:37:53 2021
 @author: Andres
 """
 
-import cv2 as cv
-from skimage import io, color
-import numpy as np
+# import cv2 as cv
+# from skimage import io, color
+# import numpy as np
 import matplotlib.pyplot as plt
 
-from tqdm import tqdm
-from os import listdir
-from os.path import join
-from PIL import Image
 
-from skimage.color import rgb2hed, hed2rgb
-
-
-#%%
 
 # Source Folder
 img_path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_raw_test/MV/'
@@ -33,6 +25,9 @@ num_imgs_augmented = 100
 
 # Show images
 showimage = False
+
+# Image size
+imsize = 896
 
 
 #%%
@@ -82,7 +77,7 @@ datagen2 = ImageDataGenerator(
 img_iterator = datagen.flow_from_directory(
                                         img_path,
                                         batch_size=1,
-                                        target_size=(896, 896),
+                                        target_size=(imsize , imsize),
                                         seed=1,
                                         
                                         save_to_dir=img_pathdest,
@@ -93,7 +88,7 @@ img_iterator = datagen.flow_from_directory(
 mask_iterator = datagen2.flow_from_directory(
                                         mask_path,
                                         batch_size=1,
-                                        target_size=(896, 896),
+                                        target_size=(imsize , imsize ),
                                         seed=1,
                                         
                                         save_to_dir= mask_pathdest,
