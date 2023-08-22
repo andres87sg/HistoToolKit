@@ -7,13 +7,14 @@ Created on Wed Nov 24 19:37:53 2021
 
 import cv2 as cv
 from skimage import color
-# from skimage import io, color
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 from os import listdir
 from PIL import Image
 
+# from skimage import io, color
 # from skimage.color import rgb2hed, hed2rgb
 
 #%% Función para generar una imagen correspondiente al Canal A del espacio LAB
@@ -58,25 +59,33 @@ listfiles = listdir(path)
 listfiles.sort()
 
 # Convert RGB images to LAB space (Channel A)
-for filename in listfiles:
-    print(filename)
+for i,filename in enumerate(listfiles):
+    print('Image No %i: ' %i + filename[:-4])
+    # print(i)
     im1 = Image.open(path + filename)
     im1 = np.asarray(im1)
     ImRgb2lab = color.rgb2lab(im1)
     
     ImChOut=separatelab(ImRgb2lab,channel='A')
     cv.imwrite(destpath+filename, ImChOut)
+    
+#%%
 
+showfigure = True
+    
+if showfigure==True:
 
-plt.figure(1)
-plt.subplot(1,2,1)
-plt.imshow(im1)
-plt.axis('off')
-plt.subplot(1,2,2)
-plt.imshow(ImChOut)
-plt.axis('off')
+    plt.figure(1)
+    plt.subplot(1,2,1)
+    plt.title("H&E")
+    plt.imshow(im1)
+    plt.axis('off')
+    plt.subplot(1,2,2)
+    plt.imshow(ImChOut)
+    plt.title("Channel A")
+    plt.axis('off')
 
-
+#%%
 """
 # Convierte las imágenes originales en imagenes en el canal A
 for filename in listfiles:
