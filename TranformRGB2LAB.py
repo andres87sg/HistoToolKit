@@ -50,9 +50,9 @@ def separatelab(lab,channel):
 
     return NewImg
 
-
-path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_TCGA/MV/'
-destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_TCGA_ChA/'
+# D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/
+path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Testing/MV/'
+destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_ChA_Aug2023/Testing/MV/'
 
 # Image list
 listfiles = listdir(path)

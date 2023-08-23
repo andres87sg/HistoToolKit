@@ -1,16 +1,28 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Nov 24 19:37:53 2021
+EN: This script was developed to augment H&E images
 
-@author: Andres
+ES: Este script fue desarrollado para aumentar el número de parches de  
+    histopatología digital. Las máscaras de segmentación también aumentarán
+    el mismo número de veces que aumnetan los parches de histopatología.
+
+    Demo of Albumentations
+    https://albumentations-demo.herokuapp.com/
+
 """
 
 # import cv2 as cv
 # from skimage import io, color
 # import numpy as np
+
+# Import libraries
 import matplotlib.pyplot as plt
+import albumentations as A
+from keras.preprocessing.image import ImageDataGenerator
 
-
+"""
+Input parameters
+"""
 
 # Source Folder
 img_path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_raw_test/MV/'
@@ -31,8 +43,7 @@ imsize = 896
 
 
 #%%
-import albumentations as A
-from keras.preprocessing.image import ImageDataGenerator
+
 
 def transform(image):
     transform = A.Compose([
@@ -53,48 +64,34 @@ def transform(image):
     ])
     return transform(image=image)['image']
 
+datagen = ImageDataGenerator(rescale=1./255,
+                             horizontal_flip=True,
+                             vertical_flip=True,
+                             rotation_range=45,
+                             fill_mode='reflect',
+                             preprocessing_function=transform,)
 
+datagen2 = ImageDataGenerator(rescale=1./255,
+                              horizontal_flip=True,
+                              vertical_flip=True,
+                              rotation_range=45,
+                              fill_mode='reflect')
 
+img_iterator = datagen.flow_from_directory(img_path,
+                                           batch_size=1,
+                                           target_size=(imsize , imsize),
+                                           seed=1,
+                                           save_to_dir=img_pathdest,
+                                           save_prefix="DataAug",
+                                           save_format='jpg',)
 
-datagen = ImageDataGenerator(
-                            rescale=1./255,
-                            horizontal_flip=True,
-                            vertical_flip=True,
-                            rotation_range=45,
-                            fill_mode='reflect',
-                            preprocessing_function=transform
-                                # preprocessing_function=transform 
-                             )
-
-datagen2 = ImageDataGenerator(
-                            rescale=1./255,
-                            horizontal_flip=True,
-                            vertical_flip=True,
-                            rotation_range=45,
-                            fill_mode='reflect', 
-                             )
-
-img_iterator = datagen.flow_from_directory(
-                                        img_path,
-                                        batch_size=1,
-                                        target_size=(imsize , imsize),
-                                        seed=1,
-                                        
-                                        save_to_dir=img_pathdest,
-                                        save_prefix="DataAug",
-                                        save_format='jpg',
-                                    )
-
-mask_iterator = datagen2.flow_from_directory(
-                                        mask_path,
-                                        batch_size=1,
-                                        target_size=(imsize , imsize ),
-                                        seed=1,
-                                        
-                                        save_to_dir= mask_pathdest,
-                                        save_prefix="SG_DataAug",
-                                        save_format='jpg',
-                                    )
+mask_iterator = datagen2.flow_from_directory(mask_path,
+                                             batch_size=1,
+                                             target_size=(imsize , imsize ),
+                                             seed=1,
+                                             save_to_dir= mask_pathdest,
+                                             save_prefix="SG_DataAug",
+                                             save_format='jpg',)
 
 #%%
 
