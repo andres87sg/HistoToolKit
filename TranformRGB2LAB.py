@@ -3,6 +3,8 @@
 Created on Wed Nov 24 19:37:53 2021
 
 @author: Andres
+
+https://stackoverflow.com/questions/19099063/what-are-the-ranges-of-coordinates-in-the-cielab-color-space
 """
 
 import cv2 as cv
@@ -51,9 +53,10 @@ def separatelab(lab,channel):
     return NewImg
 
 # D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/
-path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Testing/MV/'
-destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_ChA_Aug2023/Testing/MV/'
-
+# path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/'
+# destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_ChA_Aug2023/Training/MV/'
+path = 'D:/TCGA-GBM_Patches_MV/'
+destpath = 'D:/TCGA-GBM_Patches_MV_LAB/'
 # Image list
 listfiles = listdir(path)
 listfiles.sort()
