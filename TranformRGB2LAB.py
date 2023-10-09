@@ -23,8 +23,8 @@ def separatelab(lab,channel):
     
     # Normaliza min-max canal L    
     ch=0
-    ChannelL=(lab[:,:,ch]-np.min(lab[:,:,ch]))/(np.max(lab[:,:,ch])-np.min(lab[:,:,ch]))
-    
+    # ChannelL=(lab[:,:,ch]-np.min(lab[:,:,ch]))/(np.max(lab[:,:,ch])-np.min(lab[:,:,ch]))
+    ChannelL = lab[:,:,ch]/100
     # Normaliza min-max canal A
     ch=1
     # ChannelA=(lab[:,:,ch]-np.min(lab[:,:,ch]))/(np.max(lab[:,:,ch])-np.min(lab[:,:,ch]))
@@ -50,10 +50,18 @@ def separatelab(lab,channel):
 
     return NewImg
 
+<<<<<<< Updated upstream
 
 path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_TCGA/MV/'
 destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_TCGA_ChA/'
 
+=======
+# D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/
+# path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/'
+# destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_ChA_Aug2023/Training/MV/'
+path = 'D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_raw_Aug2023/Testing/PC/'
+destpath = 'D:/patches/'
+>>>>>>> Stashed changes
 # Image list
 listfiles = listdir(path)
 listfiles.sort()
@@ -66,7 +74,7 @@ for i,filename in enumerate(listfiles):
     im1 = np.asarray(im1)
     ImRgb2lab = color.rgb2lab(im1)
     
-    ImChOut=separatelab(ImRgb2lab,channel='A')
+    ImChOut=separatelab(ImRgb2lab,channel='L')
     cv.imwrite(destpath+filename, ImChOut)
     
 #%%
