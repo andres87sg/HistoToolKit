@@ -57,9 +57,10 @@ def separatelab(lab,channel):
 # D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/
 # path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/'
 # destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_ChA_Aug2023/Training/MV/'
-path = 'D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_raw_Aug2023/Testing/PC/'
+# path = 'D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_raw_Aug2023/Testing/PC/'
+path = 'D:/TCGA-GBM_Patches_PC/'
 destpath = 'D:/patches/'
->>>>>>> Stashed changes
+
 # Image list
 listfiles = listdir(path)
 listfiles.sort()
