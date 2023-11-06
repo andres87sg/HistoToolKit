@@ -17,7 +17,7 @@ from PIL import Image
 # from skimage import io, color
 # from skimage.color import rgb2hed, hed2rgb
 
-#%% Función para generar una imagen correspondiente al Canal A del espacio LAB
+# Función para generar una imagen correspondiente al Canal A del espacio LAB
 
 def separatelab(lab,channel):
     
@@ -57,9 +57,12 @@ def separatelab(lab,channel):
 # D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/
 # path = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_raw_Aug2023/Training/MV/'
 # destpath = 'D:/GBM_Project/Current_Experiments/MV_Patches/MV_896_ChA_Aug2023/Training/MV/'
-# path = 'D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_raw_Aug2023/Testing/PC/'
-path = 'D:/TCGA-GBM_Patches_PC/'
-destpath = 'D:/patches/'
+path = 'D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_raw_Aug2023/Testing/PC/'
+destpath = 'D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_ChL_Aug2023/Testing/PC/'
+
+# D:/GBM_Project/Current_Experiments/PC_Patches/PC_1792_raw_Aug2023/Training/PC/
+# path = 'D:/TCGA-GBM_Patches_PC/'
+# destpath = 'D:/patches/'
 
 # Image list
 listfiles = listdir(path)
@@ -78,7 +81,7 @@ for i,filename in enumerate(listfiles):
     
 #%%
 
-showfigure = True
+showfigure = False
     
 if showfigure==True:
 
