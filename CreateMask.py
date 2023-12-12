@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Oct 29 23:20:15 2023
+EN:
 
-@author: Andres
+    Create B&W mask that fits to Patch
+    
+ES:
+    Crea una máscara Blanca o Negra que se ajusta al tamaño del parche 
+
 """
 
 import cv2 as cv
@@ -14,8 +18,8 @@ import matplotlib.pyplot as plt
 from os import listdir
 from PIL import Image
 
-path = 'D:/CPTAC-GBM_Patches/CT/WSI/'
-destpath = 'D:/CPTAC-GBM_Patches/CT/SG/'
+path = 'D:/TCGA-GBM_Patches/CT/WSI/'
+destpath = 'D:/TCGA-GBM_Patches/CT/SG/'
 
 listfiles = listdir(path)
 listfiles.sort()
