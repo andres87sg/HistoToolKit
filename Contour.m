@@ -4,8 +4,8 @@ close all;
 clear;
 clc;
 
-im1 = imread('D:/TCGA-GBM_Patches_MV/TCGA-02-0006_001.jpg');
-mask = imread('D:/mask/SG_TCGA-02-0006_001.jpg');
+im1 = imread('D:\JournalPaper_Experiments\IvyGap+TCGA\PC_1792_raw\Training\PC\TCGA-02-0015_002.jpg');
+mask = imread('D:\JournalPaper_Experiments\IvyGap+TCGA\PC_1792_raw\Training\PC_SG\SG_TCGA-02-0015_002.jpg');
 
 % im1 = imread('D:\GBM_Project\Current_Experiments\MV_Patches\MV_896_raw\Testing\MV\W9-1-1-H.2.01_0014_MV.jpg');
 % mask = imread('D:\GBM_Project\Current_Experiments\MV_Patches\MV_896_ChA_data_augm\Testing\MV_SG2\SG_W9-1-1-H.2.01_0014_MV.jpg');
